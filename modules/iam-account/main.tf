@@ -1,3 +1,8 @@
+terraform {
+  # The configuration for this backend will be filled in by Terragrunt
+  backend "s3" {}
+}
+
 data "aws_caller_identity" "this" {
   count = var.get_caller_identity ? 1 : 0
 }
@@ -19,4 +24,3 @@ resource "aws_iam_account_password_policy" "this" {
   require_numbers                = var.require_numbers
   require_symbols                = var.require_symbols
 }
-

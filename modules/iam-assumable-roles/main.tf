@@ -1,3 +1,8 @@
+terraform {
+  # The configuration for this backend will be filled in by Terragrunt
+  backend "s3" {}
+}
+
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect = "Allow"
@@ -111,4 +116,3 @@ resource "aws_iam_role_policy_attachment" "readonly" {
   role       = aws_iam_role.readonly[0].name
   policy_arn = element(var.readonly_role_policy_arns, count.index)
 }
-

@@ -1,3 +1,8 @@
+terraform {
+  # The configuration for this backend will be filled in by Terragrunt
+  backend "s3" {}
+}
+
 data "aws_iam_policy_document" "assume_role" {
   statement {
     effect    = "Allow"
@@ -28,4 +33,3 @@ resource "aws_iam_group_membership" "this" {
   name  = var.name
   users = var.group_users
 }
-

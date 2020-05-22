@@ -2,6 +2,11 @@ locals {
   group_name = element(concat(aws_iam_group.this.*.id, [var.name]), 0)
 }
 
+terraform {
+  # The configuration for this backend will be filled in by Terragrunt
+  backend "s3" {}
+}
+
 resource "aws_iam_group" "this" {
   count = var.create_group ? 1 : 0
 
@@ -57,4 +62,3 @@ resource "aws_iam_policy" "custom" {
   policy      = var.custom_group_policies[count.index]["policy"]
   description = lookup(var.custom_group_policies[count.index], "description", null)
 }
-

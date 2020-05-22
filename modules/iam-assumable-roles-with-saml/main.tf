@@ -1,3 +1,8 @@
+terraform {
+  # The configuration for this backend will be filled in by Terragrunt
+  backend "s3" {}
+}
+
 data "aws_iam_policy_document" "assume_role_with_saml" {
   statement {
     effect = "Allow"

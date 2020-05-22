@@ -1,3 +1,8 @@
+terraform {
+  # The configuration for this backend will be filled in by Terragrunt
+  backend "s3" {}
+}
+
 resource "aws_iam_user" "this" {
   count = var.create_user ? 1 : 0
 
@@ -37,4 +42,3 @@ resource "aws_iam_user_ssh_key" "this" {
   encoding   = var.ssh_key_encoding
   public_key = var.ssh_public_key
 }
-
